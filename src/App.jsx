@@ -255,7 +255,7 @@ async function geminiDiscover(apiKey, country, sectors, geo, minLoad) {
   const outcomes = STORE.getOutcomes();
   const prompt = GEMINI_DISCOVER_PROMPT(country, sectors, geo, minLoad, outcomes);
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${apiKey}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -1058,7 +1058,7 @@ function SetupScreen({ onSave }) {
     setTesting(p => ({...p, gemini: "loading"}));
     try {
       const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${gemKey.trim()}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${gemKey.trim()}`,
         { method:"POST", headers:{"Content-Type":"application/json"},
           body:JSON.stringify({contents:[{role:"user",parts:[{text:"Reply with just the word: CONNECTED"}]}]}),
         }
